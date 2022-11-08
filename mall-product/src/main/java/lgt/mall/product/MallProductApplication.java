@@ -55,7 +55,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @EnableFeignClients(basePackages = "lgt.mall.product.feign")
 @EnableDiscoveryClient
-@MapperScan("lgt.mall.product.dao")
+//@MapperScan("lgt.mall.product.dao")
 @SpringBootApplication
 public class MallProductApplication {
 

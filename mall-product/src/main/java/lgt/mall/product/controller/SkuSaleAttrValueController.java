@@ -4,7 +4,10 @@ import java.util.Arrays;
 import java.util.Map;
 
 import lgt.mall.product.feign.OrderFeignService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,17 +29,21 @@ import javax.annotation.Resource;
  * @email longgt9898@163.com
  * @date 2022-11-03 10:48:25
  */
+@RefreshScope
 @RestController
 @RequestMapping("product/skusaleattrvalue")
+@Slf4j
 public class SkuSaleAttrValueController {
     @Autowired
     private SkuSaleAttrValueService skuSaleAttrValueService;
     @Resource
     private OrderFeignService orderFeignService;
+    @Value("${service.tips}")
+    private String tips;
 
     @RequestMapping("/countSales")
     public R countSalesByPid(@RequestParam("pid")String pid){
-
+        log.info("the tips is {}",tips);
         return orderFeignService.countSalesByPid(pid);
     }
 
