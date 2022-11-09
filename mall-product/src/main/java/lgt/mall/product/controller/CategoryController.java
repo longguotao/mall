@@ -86,4 +86,12 @@ public class CategoryController {
         return R.ok();
     }
 
+    /**
+     * 获取所有菜单
+     */
+    @RequestMapping("/listWithTree")
+    public R listWithTree(){
+
+        return R.ok().put("menus",categoryService.listWithTree());
+    }
 }
